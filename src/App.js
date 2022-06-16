@@ -7,11 +7,19 @@ class App extends React.Component {
   state = {
     products: [
       {
-        id: Date.now(),
+        id: 1,
         img: 'https://picsum.photos/id/237/200/400',
-        name: 'Dog Fodastico',
+        name: 'Dog 1',
         price: '5 Mérreis',
-      }
+        quantity: 1,
+      },
+      {
+        id: 2,
+        img: 'https://picsum.photos/id/237/200/400',
+        name: 'Dog 2',
+        price: '5 Mérreis',
+        quantity: 1,
+      },
     ],
     featured: [
       {
@@ -30,15 +38,40 @@ class App extends React.Component {
         img: 'https://picsum.photos/id/237/1000/1000',
         name: 'Labrador Mto pica',
       }
+    ],
+    cart: [
+      {
+        id: 23,
+        img: 'https://picsum.photos/id/237/200/400',
+        name: 'Dog Fodastico',
+        price: '5 Mérreis',
+      },
     ]
+  }
+
+  addToCart = (id) => {
+    const copyCart = [...this.state.cart]    
+    const product = this.state.products.filter(data=>{
+      return data.id === id
+    })
+    copyCart.push(product[0])
+    this.setState({cart: copyCart})
+  }
+
+  removeFromCart = (id) => {
+    // const copyCart = [...this.state.cart]
+    const product = this.state.cart.filter(data=>{
+      return data.id !== id
+    })
+    this.setState({cart: product})
   }
 
   render() {
     return (
       <>
-        <Header/>
+        <Header cart={this.state.cart} removeFromCart={this.removeFromCart}/>
         <Featured productInfos={this.state.featured}/>
-        <Products productInfos={this.state.products}/>
+        <Products addToCart={this.addToCart} productInfos={this.state.products}/>
       </>
     );
   }

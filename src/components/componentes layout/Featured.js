@@ -4,29 +4,24 @@ const Container = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  gap: 12px;
   width: 100%;
-  height: 90vh;
-  min-height: fit-content;
-  /* background-image: url(https://images.unsplash.com/photo-1559657693-e816ff3bd9af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed; */
+  height: 100%;
+  flex-wrap: wrap;
   border: 1px solid black;
-
+  padding: 4% 0px;
 `;
 
 const ContainerFeatured = styled.article`
   display: flex;
-  width: 20%;
-  height: 50%;
+  width: 400px;
+  height: 500px;
   border: 2px solid lime;
   img {
     width: 100%;
-    height: 100%;
   }
-  @media only screen and (max-width: 1368px) {
-    width: 50%;
+  @media only screen and (max-width: 800px) {
+    
   }
 `;
 

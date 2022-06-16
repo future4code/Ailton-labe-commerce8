@@ -39,6 +39,9 @@ const Options = styled.nav`
 
 const Cart = styled.div`
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: white;
   width: 400px;
   height: 90%;
@@ -46,6 +49,19 @@ const Cart = styled.div`
   top: 59px;
   right: 8px;
   color: black;
+  overflow: auto;
+`;
+
+const MiniCart = styled.div`
+  display: flex;
+  align-items: center;
+  border:1px solid black;
+  margin: 4px;
+  width: 90%;
+  img {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
 
@@ -66,11 +82,25 @@ export default class Header extends React.Component {
           <p>Teste</p>
         </Options>
         <CartClick onClick={this.openCart}>Carrinho</CartClick>
-        {this.state.cart && <Cart>
+        {this.state.cart &&
+         <Cart>
+          <div>
           <input/>
           <button>Sexo</button>
-          <p>Garrafa</p>
-          </Cart>}
+          </div>
+          {this.props.map.filter(data=>{return data.quantity !== 0}).this.props.cart.map(data=>{
+            return (
+            <MiniCart>
+              <img src={data.img}/>
+              <p>{data.name}</p>
+              <p>-{data.price}</p>
+              <p>-Quantidade: {data.quantity}</p>
+              <button onClick={()=>this.props.removeFromCart(data.id)}>Remover</button>
+            </MiniCart>
+            )
+          })}
+          </Cart>
+          }
       </StyledHeader>
     );
   }
