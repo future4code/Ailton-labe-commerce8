@@ -67,8 +67,6 @@ const MiniCart = styled.div`
   }
 `;
 
-
-
 export default class Header extends React.Component {
   state = {
     cart: false,
@@ -77,6 +75,22 @@ export default class Header extends React.Component {
     this.setState({cart: !this.state.cart})
   }
   render() {
+    const quantity = this.props.products.filter(data=>{return data.quantity > 0}).map(data=>{
+      return data.quantity
+    })    
+    let sum = 0;
+    for (let i = 0; i < quantity.length; i++) {
+    sum += quantity[i];
+    }
+
+    const price = this.props.products.filter(data=>{return data.quantity > 0}).map(data=>{
+      return data.price*data.quantity
+    })
+    let sumPrice = 0;
+    for (let i = 0; i < price.length; i++) {
+    sumPrice += price[i];
+    }
+
     return (
       <StyledHeader>
         <Options>
@@ -88,9 +102,11 @@ export default class Header extends React.Component {
         {this.state.cart &&
          <Cart>
           <div>
+            <p>{`Quantidade de items: ${sum}`}</p>
+            <p>{`Valor total do carrinho: ${sumPrice} Mérreis`}</p>
           <input placeholder="Buscar no carrinho" value={this.props.inputProps} onChange={this.props.onChangeProps}/>
           </div>
-          {this.props.searchingProps ? this.props.cart.map(data=>{
+          {this.props.searchingProps ? this.props.cart.filter(data=>{return data.quantity > 0}).map(data=>{
             return (
             <MiniCart key={data.id}>
               <img src={data.img}/>
@@ -99,7 +115,7 @@ export default class Header extends React.Component {
             </MiniCart>
             )
           }):
-          this.props.products.filter(data=>{return data.quantity> 0}).map(data=>{
+          this.props.products.filter(data=>{return data.quantity > 0}).map(data=>{
             return (
               <MiniCart key={data.id}>
               <img src={data.img}/>
