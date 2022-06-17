@@ -20,9 +20,6 @@ const ContainerFeatured = styled.article`
   img {
     width: 100%;
   }
-  @media only screen and (max-width: 800px) {
-    
-  }
 `;
 
 export default class Featured extends Component {

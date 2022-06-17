@@ -44,12 +44,15 @@ const Cart = styled.div`
   align-items: center;
   background-color: white;
   width: 400px;
-  height: 90%;
+  height: fit-content;
+  max-height: 95%;
   border: 1px solid black;
   top: 59px;
   right: 8px;
   color: black;
   overflow: auto;
+  padding: 12px;
+  border-radius: 12px;
 `;
 
 const MiniCart = styled.div`
@@ -85,16 +88,22 @@ export default class Header extends React.Component {
         {this.state.cart &&
          <Cart>
           <div>
-          <input/>
-          <button>Sexo</button>
+          <input placeholder="Buscar no carrinho" value={this.props.inputProps} onChange={this.props.onChangeProps}/>
           </div>
-          {this.props.map.filter(data=>{return data.quantity !== 0}).this.props.cart.map(data=>{
+          {this.props.searchingProps ? this.props.cart.map(data=>{
             return (
-            <MiniCart>
+            <MiniCart key={data.id}>
               <img src={data.img}/>
-              <p>{data.name}</p>
-              <p>-{data.price}</p>
-              <p>-Quantidade: {data.quantity}</p>
+              <p>{`${data.name} R$${data.price} Quantidade: ${data.quantity}`}</p>
+              <button onClick={()=>this.props.removeFromCart(data.id)}>Remover</button>
+            </MiniCart>
+            )
+          }):
+          this.props.products.filter(data=>{return data.quantity> 0}).map(data=>{
+            return (
+              <MiniCart key={data.id}>
+              <img src={data.img}/>
+              <p>{`${data.name} R$${data.price} Quantidade: ${data.quantity}`}</p>
               <button onClick={()=>this.props.removeFromCart(data.id)}>Remover</button>
             </MiniCart>
             )

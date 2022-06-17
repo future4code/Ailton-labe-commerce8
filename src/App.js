@@ -5,20 +5,44 @@ import Products from "./components/componentes layout/componentes produtos/Produ
 
 class App extends React.Component {
   state = {
+    inputSearch: '',    
+    searching: false,
+    cartSearch: [],    
     products: [
       {
         id: 1,
         img: 'https://picsum.photos/id/237/200/400',
         name: 'Dog 1',
-        price: '5 Mérreis',
-        quantity: 1,
+        price: 200,
+        quantity: 0,
       },
       {
         id: 2,
         img: 'https://picsum.photos/id/237/200/400',
         name: 'Dog 2',
-        price: '5 Mérreis',
-        quantity: 1,
+        price: 33,
+        quantity: 0,
+      },
+      {
+        id: 3,
+        img: 'https://picsum.photos/id/237/200/400',
+        name: 'Dog 3',
+        price: 40,
+        quantity: 0,
+      },
+      {
+        id: 4,
+        img: 'https://picsum.photos/id/237/200/400',
+        name: 'Gatorade',
+        price: 1,
+        quantity: 0,
+      },
+      {
+        id: 5,
+        img: 'https://picsum.photos/id/237/200/400',
+        name: 'Josefino',
+        price: 12,
+        quantity: 0,
       },
     ],
     featured: [
@@ -38,43 +62,75 @@ class App extends React.Component {
         img: 'https://picsum.photos/id/237/1000/1000',
         name: 'Labrador Mto pica',
       }
-    ],
-    cart: [
-      {
-        id: 23,
-        img: 'https://picsum.photos/id/237/200/400',
-        name: 'Dog Fodastico',
-        price: '5 Mérreis',
-      },
     ]
   }
 
   addToCart = (id) => {
-    const copyCart = [...this.state.cart]    
-    const product = this.state.products.filter(data=>{
-      return data.id === id
+    // const copyCart = [...this.state.products]
+    const product = this.state.products.map(data=>{
+      if (data.id === id) {
+        return {id: data.id, img: data.img, name: data.name, price: data.price, quantity: data.quantity+1} 
+      } else {
+        return data
+      }
     })
-    copyCart.push(product[0])
-    this.setState({cart: copyCart})
+    // console.log('tchelvis',product)
+    this.setState({products: product})
   }
 
   removeFromCart = (id) => {
-    // const copyCart = [...this.state.cart]
-    const product = this.state.cart.filter(data=>{
-      return data.id !== id
+    // const productsState = [...this.state.products]
+    const product = this.state.products.map(data=>{
+      if (data.id === id) {
+      return {id: data.id, img: data.img, name: data.name, price: data.price, quantity: data.quantity-1}
+      } else {
+        return data
+      }
     })
-    this.setState({cart: product})
+    this.setState({products: product})
   }
 
+  onChangeInput = (event) => {
+    this.setState ({inputSearch: event.target.value})
+    const newArray = this.state.products.filter(data=>{
+      if(data.quantity !== 0 && data.name.toLowerCase().includes(this.state.inputSearch.toLowerCase())){
+      return data
+      }
+    })
+    this.setState({cartSearch: newArray})
+  }
+
+  // onClickFilter = () => {
+  //   const newArray = this.state.products.filter(data=>{
+  //     if(data.quantity !== 0 && data.name.toLowerCase().includes(this.state.inputSearch.toLowerCase())){
+  //     return data
+  //     }
+  //   })
+  //   console.log(newArray)
+  //   this.setState({cartSearch: newArray, searching: !this.state.searching})
+  // }
+
   render() {
+    if (this.state.inputSearch) {
+      this.state.searching = true
+    } else {
+      this.state.searching = false
+    }
     return (
       <>
-        <Header cart={this.state.cart} removeFromCart={this.removeFromCart}/>
+        <Header
+        onClickSearch={this.onClickFilter} 
+        inputProps={this.state.inputSearch} 
+        onChangeProps={this.onChangeInput} 
+        cart={this.state.cartSearch}
+        products={this.state.products} 
+        removeFromCart={this.removeFromCart}
+        searchingProps={this.state.searching}
+        />
         <Featured productInfos={this.state.featured}/>
         <Products addToCart={this.addToCart} productInfos={this.state.products}/>
       </>
     );
   }
 }
-
 export default App;
