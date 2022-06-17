@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Logo from "../Images/logooficialloja.png"
 
 const StyledHeader = styled.header`
   display: flex;
@@ -10,9 +11,10 @@ const StyledHeader = styled.header`
   background-color: #010020;
   color: white;
   padding: 0px 12px;
-  position: fixed;
+  position: sticky;
   top: 0;
   user-select: none;
+  /* border-bottom: 0.5px white solid; */
 `;
 const CartClick = styled.p`
   color: black;
@@ -27,14 +29,13 @@ const CartClick = styled.p`
 const Options = styled.nav`
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 30px;
   align-items: center;
   width: fit-content;
   height: 100%;
-  border: 1px solid pink;
-  color: black;
-  padding: 0px 2px;
-  background-color: #c84d00;
+  /* border: 1px solid pink; */
+  /* color: black; */
+  /* padding: 0px 2px; */
 `;
 
 const Cart = styled.div`
@@ -67,6 +68,11 @@ const MiniCart = styled.div`
   }
 `;
 
+const ImageLogo = styled.img `
+width: 50px;
+height: 50px;
+`
+
 export default class Header extends React.Component {
   state = {
     cart: false,
@@ -94,7 +100,7 @@ export default class Header extends React.Component {
     return (
       <StyledHeader>
         <Options>
-          <p>Logo</p>
+          <ImageLogo src={Logo}/>
           <p>Produtos</p>
           <p>Teste</p>
         </Options>
