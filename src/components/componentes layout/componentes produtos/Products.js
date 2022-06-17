@@ -43,8 +43,8 @@ export default class Products extends Component {
         <ProductCard key={index}>
           <img src={data.img} />
           <h4>{data.name}</h4>
-          <h5>{data.price}</h5>
-          <button onClick={()=>this.props.addToCart(data.id)}>Adicionar ao Carrinho</button>          
+          <h5>{`R$${data.price}`}</h5>
+          <button onClick={()=>this.props.addToCart(data.id)}>Adicionar ao Carrinho</button>
         </ProductCard>
       );
     });

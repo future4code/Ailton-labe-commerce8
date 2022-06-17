@@ -47,7 +47,7 @@ class App extends React.Component {
     ],
     featured: [
       {
-        img: 'https://picsum.photos/id/237/1000/2000',
+        img: 'https://picsum.photos/id/237/1000/1000',
         name: 'Labrador Fodastico',
       },
       {
@@ -66,7 +66,6 @@ class App extends React.Component {
   }
 
   addToCart = (id) => {
-    // const copyCart = [...this.state.products]
     const product = this.state.products.map(data=>{
       if (data.id === id) {
         return {id: data.id, img: data.img, name: data.name, price: data.price, quantity: data.quantity+1} 
@@ -74,19 +73,35 @@ class App extends React.Component {
         return data
       }
     })
-    // console.log('tchelvis',product)
+    const productOnCart = this.state.cartSearch.map(data=>{
+      if (data.id === id) {
+        return {id: data.id, img: data.img, name: data.name, price: data.price, quantity: data.quantity+1} 
+      } else {
+        return data
+      }
+    })
+    this.setState({cartSearch: productOnCart})
     this.setState({products: product})
   }
 
   removeFromCart = (id) => {
     // const productsState = [...this.state.products]
     const product = this.state.products.map(data=>{
-      if (data.id === id) {
+      if (data.id === id && data.quantity > 0) {
       return {id: data.id, img: data.img, name: data.name, price: data.price, quantity: data.quantity-1}
       } else {
         return data
       }
     })
+    const productOnCart = this.state.cartSearch.map(data=>{
+      if (data.id === id && data.quantity > 0) {
+      return {id: data.id, img: data.img, name: data.name, price: data.price, quantity: data.quantity-1}
+      } else {
+        return data
+      }
+    })
+
+    this.setState({cartSearch: productOnCart})
     this.setState({products: product})
   }
 
@@ -115,7 +130,7 @@ class App extends React.Component {
       this.state.searching = true
     } else {
       this.state.searching = false
-    }
+    }    
     return (
       <>
         <Header
