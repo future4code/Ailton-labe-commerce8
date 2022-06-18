@@ -17,7 +17,7 @@ const Container = styled.section`
   align-items: center;
   /* gap: 12px; */
   width: 100%;
-  height: 700px;
+  height: 600px;
   /* min-height: 700px; */
   flex-wrap: wrap;
   /* border: 1px solid black; */
