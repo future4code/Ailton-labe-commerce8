@@ -1,7 +1,8 @@
 import React from "react";
-import Header from "./components/componentes layout/Header";
-import Featured from "./components/componentes layout/Featured";
-import Products from "./components/componentes layout/componentes produtos/Products";
+import Header from "./components/Header";
+import Featured from "./components/Featured";
+import Products from "./components/componentes produtos/Products";
+
 
 class App extends React.Component {
   state = {
@@ -45,24 +46,6 @@ class App extends React.Component {
         quantity: 0,
       },
     ],
-    featured: [
-      {
-        img: 'https://picsum.photos/id/237/1000/1000',
-        name: 'Labrador Fodastico',
-      },
-      {
-        img: 'https://picsum.photos/id/237/1000/1000',
-        name: 'Labrador Mto pica',
-      },
-      {
-        img: 'https://picsum.photos/id/237/1000/1000',
-        name: 'Labrador Fodastico',
-      },
-      {
-        img: 'https://picsum.photos/id/237/1000/1000',
-        name: 'Labrador Mto pica',
-      }
-    ]
   }
 
   addToCart = (id) => {
