@@ -50,7 +50,7 @@ class App extends React.Component {
       {
         id: 4,
         img: Chew,
-        name: 'Clone de Chewbacca',
+        name: 'Chubaquinha',
         price: 1,
         quantity: 0,
       },
