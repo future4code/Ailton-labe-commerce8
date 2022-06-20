@@ -85,7 +85,7 @@ const ContainerImagens3 = styled.div `
   align-items: flex-start;
   justify-content: center;
   padding-top: 2%;
-  @media screen and (max-width: 400px){
+  @media screen and (max-width: 800px){
     width: 100%;
     height: 50%;
     min-height: 300px;

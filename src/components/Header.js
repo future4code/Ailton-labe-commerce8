@@ -48,9 +48,6 @@ const Options = styled.nav`
   align-items: center;
   width: fit-content;
   height: 100%;
-  /* border: 1px solid pink; */
-  /* color: black; */
-  /* padding: 0px 2px; */
 `;
 
 const Cart = styled.div`
