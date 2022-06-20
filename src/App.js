@@ -184,16 +184,6 @@ class App extends React.Component {
     this.setState({cartSearch: newArray})
   }
 
-  // onClickFilter = () => {
-  //   const newArray = this.state.products.filter(data=>{
-  //     if(data.quantity !== 0 && data.name.toLowerCase().includes(this.state.inputSearch.toLowerCase())){
-  //     return data
-  //     }
-  //   })
-  //   console.log(newArray)
-  //   this.setState({cartSearch: newArray, searching: !this.state.searching})
-  // }
-
   render() {
     if (this.state.inputSearch) {
       this.state.searching = true
