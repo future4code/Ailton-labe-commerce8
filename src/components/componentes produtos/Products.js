@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import BackgroundPara from "../../Images/backgroundparalax.webp"
 
 
 const Container = styled.div`
 display: flex;
 flex-wrap: wrap;
 height: 100%;
+gap: 0 12px;
 justify-content: space-around;
-background-image: url(https://images.unsplash.com/photo-1559657693-e816ff3bd9af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80);
+background-image: url(${BackgroundPara});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -26,15 +28,40 @@ display: flex;
 flex-direction: column;
 align-items: center;
 width: 250px;
-height: 300px;
-padding: 8px;
+gap: 3%;
+height: 355px;
+padding: 6px;
 border-radius: 12px;
-box-shadow: 4px 4px darkgray;
-background-color: azure;
-margin: 4% 0px;
+box-shadow: 4px 4px black;
+background-color: #010110;
+margin: 2.5% 0px;
+color: white;
+border: 1px solid #FF6F15;
 img {
-  width: 100%;
-  height: 80%;
+  border-radius: 12px;
+  width: 240px;
+  height: 230px;
+}
+button {
+  border: 1px solid black;
+  border-radius: 40px;
+  padding: 2%;
+  background-color: #FF6F15;
+  color: white;
+  transition: 0.1s;
+  cursor: pointer;
+  width: 150px;
+  height: 30px;
+}
+button:hover {
+  
+  background-color: #F28401;
+  width: 160px;
+  height: 40px;
+  font-size: 14px;
+
+  
+  
 }
 `
 
