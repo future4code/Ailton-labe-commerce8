@@ -1,8 +1,5 @@
-LabEcommerce Observatorium Store
+Sejam bem vindos ao Labe-commerce, esse repositório contém um esqueleto de app React e um .gitignore.
 
-O que funciona
-Os filtros, carrinho e responsividade
-O que não funciona
-Ordenação
-Link Surge
-skillful-tax.surge.sh
+Grupo: João Pedro Zang Gomes, André Luiz Bispo, Gabriel Theodoro Ferreira.
+
+Link: https://skillful-tax.surge.sh/
