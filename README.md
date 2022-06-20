@@ -1,1 +1,8 @@
-Sejam bem vindos ao Labe-commerce, esse repositório contém um esqueleto de app React e um .gitignore.
+LabEcommerce Observatorium Store
+
+O que funciona
+Os filtros, carrinho e responsividade
+O que não funciona
+Ordenação
+Link Surge
+skillful-tax.surge.sh
